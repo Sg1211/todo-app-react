@@ -1,0 +1,13 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+}
+
+.todo-value {
+    font-size: 28px;
+}
+
+.todo-delete {
+    cursor: pointer;
+    margin-left: 50px;
+}
