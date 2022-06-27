@@ -1,3 +1,7 @@
+# Project Details
+
+This is a simple todo app that is used to maintain our day-to-day task.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
