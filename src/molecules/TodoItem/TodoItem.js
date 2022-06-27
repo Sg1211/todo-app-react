@@ -3,7 +3,9 @@ import React from 'react';
 //Styles
 import "./TodoItem.css"
 
-const TodoItem = ({id, todoText, onTodoDelete }) => {
+const TodoItem = ({todoInfo, onTodoDelete }) => {
+
+    const {id, text} = todoInfo;
 
     const _onTodoDelete = () => {
         onTodoDelete(id)
@@ -11,7 +13,7 @@ const TodoItem = ({id, todoText, onTodoDelete }) => {
   
     return (
         <div className='todo-item'>
-            <div className='todo-value'>{todoText}</div>
+            <div className='todo-value'>{text}</div>
             <div className='todo-delete' onClick={_onTodoDelete}>
                 <i className="fa fa-trash"></i>
             </div>

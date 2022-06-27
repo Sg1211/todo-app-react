@@ -11,12 +11,11 @@ const TodoList = ({todoList, onTodoDelete}) => {
     return (
       <>
         {
-            todoList.map((todoVal, index)=>{
+            todoList.map((todoInfo , index)=>{
                 return (
                     <TodoItem
                         key={index}
-                        id={index}
-                        todoText={todoVal}
+                        todoInfo={todoInfo}
                         onTodoDelete={onTodoDelete}
                     />
                 )
