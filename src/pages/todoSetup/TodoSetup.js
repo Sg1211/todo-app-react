@@ -6,38 +6,39 @@ import TodoList from '../../molecules/todoList';
 import Header from '../../atoms/header';
 
 // Constants
-import { MOCK_TODO_LIST } from '../../constants/mockData';
+import MOCK_TODO_LIST from './constants/mockTodoList';
+import { EMPTY_ARRAY } from '../../constants/todo.general';
 
-// utils
+// Utils
 import { fetchData } from '../../utils/fetchData';
 
 // Styles
 import "./TodoSetup.css"
 
 const TodoSetup = () => {
-    const [todoVal, setTodoVal] = useState("");
-    const [todoList, setTodoList] = useState([]);
+    const [todoText, setTodoText] = useState("");
+    const [todoList, setTodoList] = useState(EMPTY_ARRAY);
 
     useEffect(() => {
         fetchData(MOCK_TODO_LIST, 2000).then((list) => setTodoList(list));
-    }, []);
+    }, EMPTY_ARRAY);
 
     
     const onInputChange = (e) => {
-        setTodoVal(e.target.value);
+        setTodoText(e.target.value);
     }
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        if (!todoVal) return;
+        if (!todoText) return;
         
         const newTodoInfo = {};
         newTodoInfo.id = todoList.length + 1;
-        newTodoInfo.text = todoVal;
+        newTodoInfo.text = todoText;
 
         const newTodoList = [...todoList, newTodoInfo];
         setTodoList(newTodoList);
-        setTodoVal("");
+        setTodoText("");
     }
 
     const onTodoDelete = (selectedId) => {
@@ -46,20 +47,20 @@ const TodoSetup = () => {
         setTodoList(filteredTodos);
     }
 
-    const _getTodoForm = () => {
+    const renderTodoForm = () => {
         return (
             <TodoForm
                 btnText="add-todo"
                 btnType="submit"
                 inputType="text"
-                inputValue={todoVal}
+                inputValue={todoText}
                 onInputChange={onInputChange}
                 onFormSubmit={onFormSubmit}
             />
         )
     }
 
-    const _getTodoList = () => {
+    const renderTodoList = () => {
         return (
             <TodoList
                 todoList={todoList}
@@ -74,10 +75,10 @@ const TodoSetup = () => {
              <Header heading="My Todo App"/>
             </div>
             <div className='todo-form'>
-             {_getTodoForm()}
+             {renderTodoForm()}
             </div>
             <div className='todo-list'>
-             {_getTodoList()}
+             {renderTodoList()}
             </div>
         </div>
     )
