@@ -1,7 +1,9 @@
 import React from 'react';
 
-import TodoItem from '../TodoItem/TodoItem';
+// Components
+import TodoItem from '../todoItem';
 
+// Styles
 import "./TodoList.css"
 
 const TodoList = ({todoList, onTodoDelete}) => {
@@ -13,8 +15,9 @@ const TodoList = ({todoList, onTodoDelete}) => {
                 return (
                     <TodoItem
                         key={index}
+                        id={index}
                         todoText={todoVal}
-                        onTodoDelete={() => onTodoDelete(index)}
+                        onTodoDelete={onTodoDelete}
                     />
                 )
             })

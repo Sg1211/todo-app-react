@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 
-import InputForm from '../../molecules/InputForm/InputForm';
-import TodoList from '../../molecules/TodoList/TodoList';
-import Header from '../../atoms/Header/Header';
+// Components
+import TodoForm from '../../molecules/todoForm';
+import TodoList from '../../molecules/todoList';
+import Header from '../../atoms/header';
 
+// Styles
 import "./TodoSetup.css"
 
 const TodoSetup = () => {
@@ -28,6 +30,28 @@ const TodoSetup = () => {
         newTodos.splice(index, 1);
         setTodoList(newTodos);
     }
+
+    const _getTodoForm = () => {
+        return (
+            <TodoForm
+                btnText="add-todo"
+                btnType="submit"
+                inputType="text"
+                inputValue={todoVal}
+                onInputChange={onInputChange}
+                onFormSubmit={onFormSubmit}
+            />
+        )
+    }
+
+    const _getTodoList = () => {
+        return (
+            <TodoList
+                todoList={todoList}
+                onTodoDelete={onTodoDelete}
+            />
+        )
+    }
   
     return (
         <div className='todo-container'>
@@ -35,19 +59,10 @@ const TodoSetup = () => {
              <Header heading="My Todo App"/>
             </div>
             <div className='todo-form'>
-             <InputForm
-                btnText="add-todo"
-                btnType="submit"
-                inputType="text"
-                inputValue={todoVal}
-                onInputChange={onInputChange}
-                onFormSubmit={onFormSubmit}/>
+             {_getTodoForm()}
             </div>
             <div className='todo-list'>
-             <TodoList
-                todoList={todoList}
-                onTodoDelete={onTodoDelete}
-               />
+             {_getTodoList()}
             </div>
         </div>
     )

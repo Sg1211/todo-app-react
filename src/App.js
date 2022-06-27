@@ -1,14 +1,10 @@
 import React from 'react';
 
-import TodoSetup from './organisms/TodoSetup/TodoSetup';
-
-import './App.css';
+import TodoSetup from './pages/todoSetup';
 
 function App() {
   return (
-    <div className="App">
       <TodoSetup/>
-    </div>
   );
 }
 
