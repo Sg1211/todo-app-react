@@ -3,20 +3,19 @@ import React from 'react';
 //Styles
 import "./TodoItem.css"
 
-const TodoItem = ({todoInfo, onTodoDelete }) => {
+const TodoItem = ({todoInfo, onTodoClick }) => {
 
-    const {id, text} = todoInfo;
+    const {id, text, isCompleted} = todoInfo;
 
-    const _onTodoDelete = () => {
-        onTodoDelete(id)
+    const onClick = () => {
+        onTodoClick(id)
     }
-  
+
+    const strikeClass = isCompleted ? "strike-class" : " ";  
+
     return (
         <div className='todo-item'>
-            <div className='todo-value'>{text}</div>
-            <div className='todo-delete' onClick={_onTodoDelete}>
-                <i className="fa fa-trash"></i>
-            </div>
+            <div className={`todo-value ${strikeClass}`} onClick={onClick}>{text}</div>
         </div>
     )
 }

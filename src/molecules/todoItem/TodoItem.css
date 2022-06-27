@@ -4,10 +4,15 @@
 }
 
 .todo-value {
+    cursor: pointer;
     font-size: 28px;
 }
 
 .todo-delete {
     cursor: pointer;
     margin-left: 50px;
+}
+
+.strike-class {
+    text-decoration: line-through;
 }

@@ -6,7 +6,7 @@ import TodoItem from '../todoItem';
 // Styles
 import "./TodoList.css"
 
-const TodoList = ({todoList, onTodoDelete}) => {
+const TodoList = ({todoList, onTodoClick}) => {
   
     return (
       <>
@@ -16,7 +16,7 @@ const TodoList = ({todoList, onTodoDelete}) => {
                     <TodoItem
                         key={index}
                         todoInfo={todoInfo}
-                        onTodoDelete={onTodoDelete}
+                        onTodoClick={onTodoClick}
                     />
                 )
             })
