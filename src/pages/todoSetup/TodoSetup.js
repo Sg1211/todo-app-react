@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import TodoForm from '../../molecules/todoForm';
@@ -9,12 +10,23 @@ import Header from '../../atoms/header';
 import useFetchData from './hooks/useFetchData';
 import useTodoSetup from './hooks/useTodoSetup';
 
+// Actions
+import { fetchTodoList as fetchTodoListAction } from './actions/todoList';
+import { addTodoList as addTodoListAction } from './actions/todoList';
+
 // Styles
 import "./TodoSetup.css"
 
-const TodoSetup = () => {
-    const {todoList, setTodoList} = useFetchData();
-    const {todoText, onInputChange, onFormSubmit, onTodoClick} = useTodoSetup(todoList, setTodoList);
+const TodoSetup = props => {
+    const {
+        todoList,
+        isTodoListLoading,
+        fetchTodoList,
+        addTodoList
+      } = props;
+
+    useFetchData(fetchTodoList);
+    const {todoText, onInputChange, onFormSubmit, onTodoClick} = useTodoSetup(todoList, addTodoList);
 
 
     const renderTodoForm = () => {
@@ -31,6 +43,7 @@ const TodoSetup = () => {
     }
 
     const renderTodoList = () => {
+        if(isTodoListLoading) return;
         return (
             <TodoList
                 todoList={todoList}
@@ -54,4 +67,14 @@ const TodoSetup = () => {
     )
 }
 
-export default TodoSetup;
+const mapStateToProps = state => ({
+    todoList: state.todoList,
+    isTodoListLoading: state.isTodoListLoading
+  });
+  
+const mapDispatchToProps = {
+    fetchTodoList: fetchTodoListAction,
+    addTodoList: addTodoListAction,
+  };
+  
+export default connect(mapStateToProps, mapDispatchToProps)(TodoSetup);
