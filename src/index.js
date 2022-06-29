@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux'
-import thunk from "redux-thunk" 
 
-import { createStore, applyMiddleware } from "redux";
-import TodoListReducer from "./pages/todoSetup/reducers";
+// Store 
+import store from './store';
 
-import './index.css';
+// Components
 import App from './App';
 
-const store = createStore(TodoListReducer,undefined, applyMiddleware(thunk));
+// Styles
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

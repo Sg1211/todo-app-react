@@ -1,4 +1,4 @@
-export const fetchData = (data, timeout, errorProbability = 0) =>
+const fetchData = (data, timeout, errorProbability = 0) =>
     new Promise((resolve, reject) => {
         setTimeout(() => {
             //const isErrored = hasError(errorProbability);
@@ -11,3 +11,5 @@ export const fetchData = (data, timeout, errorProbability = 0) =>
             resolve(data);
         }, timeout);
     });
+
+export default fetchData;

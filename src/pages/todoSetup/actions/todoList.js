@@ -7,10 +7,10 @@ import {
 } from './creators/todoList';
 
 // Utils
-import { fetchData } from '../utils/fetchData';
+import fetchData from '../utils/fetchData';
 
+// Constants
 import MOCK_TODO_LIST from '../constants/mockTodoList';
-
 
 const saveTodoListInStore = (todoList, dispatch) => {
   compose(dispatch, createSaveTodoListAction)({ todoList });

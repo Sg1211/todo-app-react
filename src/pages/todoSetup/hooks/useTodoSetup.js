@@ -4,11 +4,11 @@ import {useState } from 'react';
 function useTodoSetup(todoList, addTodoList) {
     const [todoText, setTodoText] = useState("");
 
-       const onInputChange = (e) => {
+       const handleTodoTextChange = (e) => {
             setTodoText(e.target.value);
         }
     
-        const onFormSubmit = (e) => {
+        const handleTodoItemSave = (e) => {
             e.preventDefault();
             if (!todoText) return;
             
@@ -31,7 +31,7 @@ function useTodoSetup(todoList, addTodoList) {
             addTodoList(newTodoList);
         }
 
-    return {todoText, onInputChange, onFormSubmit, onTodoClick}
+    return {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick}
 }
 
 export default useTodoSetup;

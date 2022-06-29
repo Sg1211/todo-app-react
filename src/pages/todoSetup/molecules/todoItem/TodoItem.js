@@ -1,4 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// Lodash
+import _noop from 'lodash/noop';
+
+// Constants
+import { EMPTY_OBJECT } from '../../../../constants/todo.general'
 
 //Styles
 import "./TodoItem.css"
@@ -19,5 +26,15 @@ const TodoItem = ({todoInfo, onTodoClick }) => {
         </div>
     )
 }
+
+TodoItem.propTypes = {
+    todoInfo: PropTypes.object,
+    onTodoClick: PropTypes.func
+};
+  
+TodoItem.defaultProps = {
+    todoInfo: EMPTY_OBJECT,
+    onTodoClick: _noop
+};
 
 export default TodoItem;

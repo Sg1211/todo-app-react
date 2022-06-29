@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// Components
+// Lodash
+import _noop from 'lodash/noop';
+
+// Constants
+import { EMPTY_ARRAY } from '../../../../constants/todo.general'
 import TodoItem from '../todoItem';
 
 // Styles
@@ -24,5 +29,15 @@ const TodoList = ({todoList, onTodoClick}) => {
      </>
     )
 }
+
+TodoList.propTypes = {
+    todoList: PropTypes.array,
+    onTodoClick: PropTypes.func
+};
+  
+TodoList.defaultProps = {
+    todoList: EMPTY_ARRAY,
+    onTodoClick: _noop
+};
 
 export default TodoList;

@@ -25,4 +25,6 @@ const ACTION_HANDLERS = {
   [ACTION_TYPES.SET_IS_TODO_LIST_LOADING]: setIsTodoListLoading,
 };
 
-export default handleActions(ACTION_HANDLERS, INITIAL_STATE);
+const TodoListReducer = handleActions(ACTION_HANDLERS, INITIAL_STATE);
+
+export default TodoListReducer;
