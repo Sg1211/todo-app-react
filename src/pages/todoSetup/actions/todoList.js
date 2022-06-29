@@ -29,8 +29,7 @@ const fetchTodoList = () => async dispatch => {
   }
 };
 
-const updateTodoList = (todoList) => (dispatch, getState) => {
-    //console.log(getState());
+const updateTodoList = (todoList) => (dispatch) => {
     saveTodoListInStore(todoList, dispatch);
 }
 
