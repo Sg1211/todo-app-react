@@ -34,7 +34,7 @@ const TodoSetup = props => {
       } = props;
 
     useFetchTodoList(fetchTodoList);
-    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick} = useTodoSetup(todoList, updateTodoList);
+    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoItemClick} = useTodoSetup(todoList, updateTodoList);
 
     const renderTodoForm = () => {
         return (
@@ -54,7 +54,7 @@ const TodoSetup = props => {
         return (
             <TodoList
                 todoList={todoList}
-                onTodoClick={onTodoClick}
+                onTodoItemClick={onTodoItemClick}
             />
         )
     }

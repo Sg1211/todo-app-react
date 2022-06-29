@@ -10,31 +10,31 @@ import { EMPTY_OBJECT } from '../../../../constants/todo.general'
 //Styles
 import "./TodoItem.css"
 
-const TodoItem = ({todoInfo, onTodoClick }) => {
+const TodoItem = ({todoInfo, onTodoItemClick }) => {
 
     const {id, text, isCompleted} = todoInfo;
 
-    const onTodoItemClick = () => {
-        onTodoClick(id)
+    const onTodoClick = () => {
+        onTodoItemClick(id)
     }
 
     const strikeClass = isCompleted ? "strike-class" : " ";  
 
     return (
         <div className='todo-item'>
-            <div className={`todo-value ${strikeClass}`} onClick={onTodoItemClick}>{text}</div>
+            <div className={`todo-value ${strikeClass}`} onClick={onTodoClick}>{text}</div>
         </div>
     )
 }
 
 TodoItem.propTypes = {
     todoInfo: PropTypes.object,
-    onTodoClick: PropTypes.func
+    onTodoItemClick: PropTypes.func
 };
   
 TodoItem.defaultProps = {
     todoInfo: EMPTY_OBJECT,
-    onTodoClick: _noop
+    onTodoItemClick: _noop
 };
 
 export default TodoItem;

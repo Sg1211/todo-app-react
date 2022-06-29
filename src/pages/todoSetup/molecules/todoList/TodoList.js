@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // Lodash
 import _noop from 'lodash/noop';
+import _map from 'lodash/map';
 
 // Constants
 import { EMPTY_ARRAY } from '../../../../constants/todo.general'
@@ -11,33 +12,38 @@ import TodoItem from '../todoItem';
 // Styles
 import "./TodoList.css"
 
-const TodoList = ({todoList, onTodoClick}) => {
+const TodoList = ({todoList, onTodoItemClick}) => {
+
+    const getTodoItem = (todoInfo, index) => {
+        return (
+            <TodoItem
+                key={index}
+                todoInfo={todoInfo}
+                onTodoItemClick={onTodoItemClick}
+            />
+        )
+    }
+
+    const renderTodoList = (todoList) => {
+     const listToDisplay =  _map(todoList, getTodoItem)
+     return listToDisplay;
+    }
   
     return (
       <>
-        {
-            todoList.map((todoInfo , index)=>{
-                return (
-                    <TodoItem
-                        key={index}
-                        todoInfo={todoInfo}
-                        onTodoClick={onTodoClick}
-                    />
-                )
-            })
-        }
+        {renderTodoList(todoList)}
      </>
     )
 }
 
 TodoList.propTypes = {
     todoList: PropTypes.array,
-    onTodoClick: PropTypes.func
+    onTodoItemClick: PropTypes.func
 };
   
 TodoList.defaultProps = {
     todoList: EMPTY_ARRAY,
-    onTodoClick: _noop
+    onTodoItemClick: _noop
 };
 
 export default TodoList;

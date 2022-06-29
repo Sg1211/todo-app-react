@@ -1,6 +1,9 @@
 // Hooks
 import {useState } from 'react';
 
+// Lodash
+import _map from 'lodash/map';
+
 function useTodoSetup(todoList, updateTodoList) {
     const [todoText, setTodoText] = useState("");
 
@@ -21,17 +24,19 @@ function useTodoSetup(todoList, updateTodoList) {
             updateTodoList(newTodoList);
             setTodoText("");
         }
-    
-        const onTodoClick = (selectedId) => {
-            const newTodoList = todoList.map((todoInfo) => {
-                if(todoInfo.id === selectedId && todoInfo.isCompleted === false)
+
+        const isCompletedTodoList = (todoInfo, selectedId) => {
+            if(todoInfo.id === selectedId && todoInfo.isCompleted === false)
                      todoInfo.isCompleted = true;
                 return todoInfo;
-            })
+        }
+    
+        const onTodoItemClick = (selectedId) => {
+            const newTodoList = _map(todoList, todoInfo => isCompletedTodoList(todoInfo, selectedId));
             updateTodoList(newTodoList);
         }
 
-    return {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick}
+    return {todoText, handleTodoTextChange, handleTodoItemSave, onTodoItemClick}
 }
 
 export default useTodoSetup;
