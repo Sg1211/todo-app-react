@@ -11,12 +11,12 @@ import TodoList from './molecules/todoList';
 import Header from '../../atoms/header';
 
 // Hooks
-import useFetchData from './hooks/useFetchData';
+import useFetchTodoList from './hooks/useFetchTodoList';
 import useTodoSetup from './hooks/useTodoSetup';
 
 // Actions
 import { fetchTodoList as fetchTodoListAction } from './actions/todoList';
-import { addTodoList as addTodoListAction } from './actions/todoList';
+import { updateTodoList as updateTodoListAction } from './actions/todoList';
 
 // Constants
 import { EMPTY_ARRAY } from '../../constants/todo.general';
@@ -30,11 +30,11 @@ const TodoSetup = props => {
         todoList,
         isTodoListLoading,
         fetchTodoList,
-        addTodoList
+        updateTodoList
       } = props;
 
-    useFetchData(fetchTodoList);
-    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick} = useTodoSetup(todoList, addTodoList);
+    useFetchTodoList(fetchTodoList);
+    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick} = useTodoSetup(todoList, updateTodoList);
 
     const renderTodoForm = () => {
         return (
@@ -78,14 +78,14 @@ TodoSetup.propTypes = {
     todoList: PropTypes.array,
     isTodoListLoading: PropTypes.bool,
     fetchTodoList: PropTypes.func,
-    addTodoList: PropTypes.func,
+    updateTodoList: PropTypes.func,
   };
   
 TodoSetup.defaultProps = {
     todoList: EMPTY_ARRAY,
     isTodoListLoading: true,
     fetchTodoList: _noop,
-    addTodoList: _noop,
+    updateTodoList: _noop,
   };
 
 const mapStateToProps = state => ({
@@ -95,7 +95,7 @@ const mapStateToProps = state => ({
   
 const mapDispatchToProps = {
     fetchTodoList: fetchTodoListAction,
-    addTodoList: addTodoListAction,
+    updateTodoList: updateTodoListAction,
   };
   
 export default connect(mapStateToProps, mapDispatchToProps)(TodoSetup);

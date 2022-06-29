@@ -14,7 +14,7 @@ const TodoItem = ({todoInfo, onTodoClick }) => {
 
     const {id, text, isCompleted} = todoInfo;
 
-    const onClick = () => {
+    const onTodoItemClick = () => {
         onTodoClick(id)
     }
 
@@ -22,7 +22,7 @@ const TodoItem = ({todoInfo, onTodoClick }) => {
 
     return (
         <div className='todo-item'>
-            <div className={`todo-value ${strikeClass}`} onClick={onClick}>{text}</div>
+            <div className={`todo-value ${strikeClass}`} onClick={onTodoItemClick}>{text}</div>
         </div>
     )
 }

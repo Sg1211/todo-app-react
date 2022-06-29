@@ -1,4 +1,4 @@
-const fetchData = (data, timeout, errorProbability = 0) =>
+const fetchTodoListData = (data, timeout, errorProbability = 0) =>
     new Promise((resolve, reject) => {
         setTimeout(() => {
             //const isErrored = hasError(errorProbability);
@@ -12,4 +12,4 @@ const fetchData = (data, timeout, errorProbability = 0) =>
         }, timeout);
     });
 
-export default fetchData;
+export default fetchTodoListData;

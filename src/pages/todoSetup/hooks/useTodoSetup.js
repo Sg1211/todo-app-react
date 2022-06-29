@@ -1,7 +1,7 @@
 // Hooks
 import {useState } from 'react';
 
-function useTodoSetup(todoList, addTodoList) {
+function useTodoSetup(todoList, updateTodoList) {
     const [todoText, setTodoText] = useState("");
 
        const handleTodoTextChange = (e) => {
@@ -18,7 +18,7 @@ function useTodoSetup(todoList, addTodoList) {
             newTodoInfo.isCompleted = false;
     
             const newTodoList = [...todoList, newTodoInfo];
-            addTodoList(newTodoList);
+            updateTodoList(newTodoList);
             setTodoText("");
         }
     
@@ -28,7 +28,7 @@ function useTodoSetup(todoList, addTodoList) {
                      todoInfo.isCompleted = true;
                 return todoInfo;
             })
-            addTodoList(newTodoList);
+            updateTodoList(newTodoList);
         }
 
     return {todoText, handleTodoTextChange, handleTodoItemSave, onTodoClick}

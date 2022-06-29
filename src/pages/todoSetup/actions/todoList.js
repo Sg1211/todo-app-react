@@ -7,7 +7,7 @@ import {
 } from './creators/todoList';
 
 // Utils
-import fetchData from '../utils/fetchData';
+import fetchTodoListData from '../utils/fetchTodoListData';
 
 // Constants
 import MOCK_TODO_LIST from '../constants/mockTodoList';
@@ -20,7 +20,7 @@ const fetchTodoList = () => async dispatch => {
   compose(dispatch, createSaveIsTodoListLoadingAction)({ isTodoListLoading: true });
 
   try {
-    const todoList = await fetchData(MOCK_TODO_LIST, 2000);
+    const todoList = await fetchTodoListData(MOCK_TODO_LIST, 2000);
     saveTodoListInStore(todoList, dispatch);
   } catch (error) {
     //handleFetchTaxSettingsFailure(error);
@@ -29,8 +29,8 @@ const fetchTodoList = () => async dispatch => {
   }
 };
 
-const addTodoList = (todoList) => dispatch => {
+const updateTodoList = (todoList) => dispatch => {
     saveTodoListInStore(todoList, dispatch);
 }
 
-export { fetchTodoList, addTodoList };
+export { fetchTodoList, updateTodoList };
