@@ -9,6 +9,7 @@ import _noop from 'lodash/noop';
 import TodoForm from './molecules/todoForm';
 import TodoList from './molecules/todoList';
 import Header from '../../atoms/header';
+import Loader from '../../atoms/loader';
 
 // Hooks
 import useFetchTodoList from './hooks/useFetchTodoList';
@@ -50,7 +51,9 @@ const TodoSetup = props => {
     }
 
     const renderTodoList = () => {
-        if(isTodoListLoading) return;
+        if(isTodoListLoading) 
+        return(<Loader loadingText="List is loading..."/>);
+        
         return (
             <TodoList
                 todoList={todoList}
