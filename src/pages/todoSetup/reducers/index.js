@@ -1,5 +1,5 @@
 // Action types
-import TODO_LIST_ACTION_TYPES from './actionTypes/todoList.ActionTypes';
+import TODO_LIST_ACTION_TYPES from './actionTypes/todoList';
 
 // Reducers
 import TodoListReducer from './todoList';

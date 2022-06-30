@@ -23,7 +23,7 @@ const fetchTodoList = () => async dispatch => {
     const todoList = await fetchTodoListData(MOCK_TODO_LIST, 2000);
     saveTodoListInStore(todoList, dispatch);
   } catch (error) {
-    //handleFetchTaxSettingsFailure(error);
+    saveTodoListInStore([], dispatch);
   } finally {
     compose(dispatch, createSaveIsTodoListLoadingAction)({ isTodoListLoading: false });
   }

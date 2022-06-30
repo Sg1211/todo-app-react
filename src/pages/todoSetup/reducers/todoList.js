@@ -3,7 +3,7 @@ import produce from 'immer';
 
 // Constants
 import { EMPTY_ARRAY } from '../../../constants/todo.general';
-import ACTION_TYPES from './actionTypes/todoList.ActionTypes';
+import ACTION_TYPES from './actionTypes/todoList';
 
 const INITIAL_STATE = {
   todoList: EMPTY_ARRAY,

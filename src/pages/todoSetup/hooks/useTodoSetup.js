@@ -25,14 +25,14 @@ function useTodoSetup(todoList, updateTodoList) {
             setTodoText("");
         }
 
-        const isCompletedTodoList = (todoInfo, selectedId) => {
-            if(todoInfo.id === selectedId && todoInfo.isCompleted === false)
-                     todoInfo.isCompleted = true;
-                return todoInfo;
+        const isCompletedTodoList = (selectedId) => todoInfo => {
+            if(todoInfo.id === selectedId)
+                todoInfo.isCompleted = !todoInfo.isCompleted
+            return todoInfo;
         }
     
         const onTodoItemClick = (selectedId) => {
-            const newTodoList = _map(todoList, todoInfo => isCompletedTodoList(todoInfo, selectedId));
+            const newTodoList = _map(todoList, isCompletedTodoList(selectedId));
             updateTodoList(newTodoList);
         }
 

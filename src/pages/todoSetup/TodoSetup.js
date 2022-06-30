@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 
 // Lodash
 import _noop from 'lodash/noop';
+import _isEmpty from 'lodash/isEmpty';
 
 // Components
 import TodoForm from './molecules/todoForm';
 import TodoList from './molecules/todoList';
 import Header from '../../atoms/header';
 import Loader from '../../atoms/loader';
+import ErrorField from '../../atoms/errorField';
+
 
 // Hooks
 import useFetchTodoList from './hooks/useFetchTodoList';
@@ -53,7 +56,10 @@ const TodoSetup = props => {
     const renderTodoList = () => {
         if(isTodoListLoading) 
         return(<Loader loadingText="List is loading..."/>);
-        
+
+        if(_isEmpty(todoList))
+        return (<ErrorField errorText="List is empty"/>)
+
         return (
             <TodoList
                 todoList={todoList}
