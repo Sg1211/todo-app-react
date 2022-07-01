@@ -12,7 +12,7 @@ Loader.propTypes = {
   };
   
 Loader.defaultProps = {
-    loadingText:''
+    loadingText:'Fetching data'
   };
  
 export default Loader;

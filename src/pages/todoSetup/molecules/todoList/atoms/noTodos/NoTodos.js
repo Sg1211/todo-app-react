@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
  
-const ErrorField = ({errorText}) => {
+const NoTodos = ({errorText}) => {
    return (
        <h1>{errorText}</h1>
    );
 };
 
-ErrorField.propTypes = {
+NoTodos.propTypes = {
     errorText: PropTypes.string
   };
   
-ErrorField.defaultProps = {
-    errorText:''
+NoTodos.defaultProps = {
+    errorText:'No Data Found'
   };
  
-export default ErrorField;
+export default NoTodos;

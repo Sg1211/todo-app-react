@@ -11,7 +11,7 @@ import TodoForm from './molecules/todoForm';
 import TodoList from './molecules/todoList';
 import Header from '../../atoms/header';
 import Loader from '../../atoms/loader';
-import ErrorField from '../../atoms/errorField';
+import NoTodos from '../../pages/todoSetup/molecules/todoList/atoms/noTodos';
 
 
 // Hooks
@@ -58,7 +58,7 @@ const TodoSetup = props => {
         return(<Loader loadingText="List is loading..."/>);
 
         if(_isEmpty(todoList))
-        return (<ErrorField errorText="List is empty"/>)
+        return (<NoTodos errorText="No data found"/>)
 
         return (
             <TodoList

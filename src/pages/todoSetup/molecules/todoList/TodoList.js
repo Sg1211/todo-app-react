@@ -7,7 +7,7 @@ import _map from 'lodash/map';
 
 // Constants
 import { EMPTY_ARRAY } from '../../../../constants/todo.general'
-import TodoItem from '../todoItem';
+import TodoItem from './atoms/todoItem';
 
 // Styles
 import "./TodoList.css"

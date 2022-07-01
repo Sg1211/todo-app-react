@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import _noop from 'lodash/noop';
 
 // Constants
-import { EMPTY_OBJECT } from '../../../../constants/todo.general'
+import { EMPTY_OBJECT } from '../../../../../../constants/todo.general'
 
 //Styles
 import "./TodoItem.css"
