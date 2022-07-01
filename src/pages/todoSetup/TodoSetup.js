@@ -16,7 +16,7 @@ import NoTodos from '../../pages/todoSetup/molecules/todoList/atoms/noTodos';
 
 // Hooks
 import useFetchTodoList from './hooks/useFetchTodoList';
-import useTodoSetup from './hooks/useTodoSetup';
+import useTodoSetup from './hooks/useTodoSetup/useTodoSetup';
 
 // Actions
 import { fetchTodoList as fetchTodoListAction } from './actions/todoList';

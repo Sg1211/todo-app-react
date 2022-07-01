@@ -4,6 +4,9 @@ import {useState } from 'react';
 // Lodash
 import _map from 'lodash/map';
 
+// Helpers
+import { createTodoItem } from './useTodoSetup.helpers'
+
 function useTodoSetup(todoList, updateTodoList, saveTodoList) {
     const [todoText, setTodoText] = useState("");
 
@@ -11,19 +14,11 @@ function useTodoSetup(todoList, updateTodoList, saveTodoList) {
             setTodoText(e.target.value);
         }
 
-        const createTodoItem = () => {
-            const newTodoInfo = {};
-            newTodoInfo.id = todoList.length + 1;
-            newTodoInfo.text = todoText;
-            newTodoInfo.isCompleted = false;
-            return newTodoInfo;
-        }
-    
         const handleTodoItemSave = (e) => {
             e.preventDefault();
             if (!todoText) return;
              
-            const newTodoInfo = createTodoItem();
+            const newTodoInfo = createTodoItem(todoList, todoText);
             updateTodoList(newTodoInfo);
             setTodoText("");
         }
