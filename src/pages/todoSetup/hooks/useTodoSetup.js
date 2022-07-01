@@ -11,7 +11,7 @@ function useTodoSetup(todoList, updateTodoList, saveTodoList) {
             setTodoText(e.target.value);
         }
 
-        const todoItemCreation = () => {
+        const createTodoItem = () => {
             const newTodoInfo = {};
             newTodoInfo.id = todoList.length + 1;
             newTodoInfo.text = todoText;
@@ -23,7 +23,7 @@ function useTodoSetup(todoList, updateTodoList, saveTodoList) {
             e.preventDefault();
             if (!todoText) return;
              
-            const newTodoInfo = todoItemCreation();
+            const newTodoInfo = createTodoItem();
             updateTodoList(newTodoInfo);
             setTodoText("");
         }
