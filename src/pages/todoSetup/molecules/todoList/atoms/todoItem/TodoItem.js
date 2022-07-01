@@ -18,11 +18,15 @@ const TodoItem = ({todoInfo, onTodoItemClick }) => {
         onTodoItemClick(id)
     }
 
-    const strikeClass = isCompleted ? "strike-class" : " ";  
+    const getTodoItemClass = () => { 
+        const className = isCompleted ? "strike-class" : " " 
+        return className;
+    }
+      
 
     return (
         <div className='todo-item'>
-            <div className={`todo-value ${strikeClass}`} onClick={onTodoClick}>{text}</div>
+            <div className={`todo-value ${getTodoItemClass()}`} onClick={onTodoClick}>{text}</div>
         </div>
     )
 }

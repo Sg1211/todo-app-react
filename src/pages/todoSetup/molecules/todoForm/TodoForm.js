@@ -6,7 +6,7 @@ import _noop from 'lodash/noop';
 
 // Components
 import Button from '../../../../atoms/button'
-import InputField from '../../../../atoms/inputField';
+import InputField from './atoms/inputField';
 
 const TodoForm = ({
     btnText, 

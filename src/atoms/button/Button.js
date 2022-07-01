@@ -16,7 +16,7 @@ const Button = ({btnType, btnText, onClick}) => {
 
 Button.propTypes = {
   btnType: PropTypes.string,
-  btnText: PropTypes.string,
+  btnText: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 

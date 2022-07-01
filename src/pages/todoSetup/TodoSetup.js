@@ -21,6 +21,7 @@ import useTodoSetup from './hooks/useTodoSetup';
 // Actions
 import { fetchTodoList as fetchTodoListAction } from './actions/todoList';
 import { updateTodoList as updateTodoListAction } from './actions/todoList';
+import { saveTodoList as saveTodoListAction } from './actions/todoList';
 
 // Constants
 import { EMPTY_ARRAY } from '../../constants/todo.general';
@@ -34,11 +35,12 @@ const TodoSetup = props => {
         todoList,
         isTodoListLoading,
         fetchTodoList,
-        updateTodoList
+        updateTodoList,
+        saveTodoList
       } = props;
 
     useFetchTodoList(fetchTodoList);
-    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoItemClick} = useTodoSetup(todoList, updateTodoList);
+    const {todoText, handleTodoTextChange, handleTodoItemSave, onTodoItemClick} = useTodoSetup(todoList, updateTodoList, saveTodoList);
 
     const renderTodoForm = () => {
         return (
@@ -58,7 +60,7 @@ const TodoSetup = props => {
         return(<Loader loadingText="List is loading..."/>);
 
         if(_isEmpty(todoList))
-        return (<NoTodos errorText="No data found"/>)
+        return (<NoTodos errorText="No todos found"/>)
 
         return (
             <TodoList
@@ -95,6 +97,7 @@ TodoSetup.defaultProps = {
     isTodoListLoading: true,
     fetchTodoList: _noop,
     updateTodoList: _noop,
+    saveTodoList: _noop
   };
 
 const mapStateToProps = state => ({
@@ -105,6 +108,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
     fetchTodoList: fetchTodoListAction,
     updateTodoList: updateTodoListAction,
+    saveTodoList: saveTodoListAction
   };
   
 export default connect(mapStateToProps, mapDispatchToProps)(TodoSetup);

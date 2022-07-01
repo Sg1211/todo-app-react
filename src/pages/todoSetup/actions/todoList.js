@@ -12,6 +12,9 @@ import fetchTodoListData from '../utils/fetchTodoListData';
 // Constants
 import MOCK_TODO_LIST from '../constants/mockTodoList';
 
+// Helpers
+import {getUpdatedTodoList} from './todoList.helpers';
+
 const saveTodoListInStore = (todoList, dispatch) => {
   compose(dispatch, createSaveTodoListAction)({ todoList });
 };
@@ -29,8 +32,13 @@ const fetchTodoList = () => async dispatch => {
   }
 };
 
-const updateTodoList = (todoList) => (dispatch) => {
-    saveTodoListInStore(todoList, dispatch);
+const updateTodoList = (todoInfo) => (dispatch, getState) => {
+    const updatedTodoList = getUpdatedTodoList(todoInfo, getState)
+    saveTodoListInStore(updatedTodoList, dispatch);
 }
 
-export { fetchTodoList, updateTodoList };
+const saveTodoList = (todoList) => (dispatch) => {
+  saveTodoListInStore(todoList, dispatch);
+}
+
+export { fetchTodoList, updateTodoList, saveTodoList };

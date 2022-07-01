@@ -1,4 +1,4 @@
-// Action types
+// Constants
 import TODO_LIST_ACTION_TYPES from './actionTypes/todoList';
 
 // Reducers
