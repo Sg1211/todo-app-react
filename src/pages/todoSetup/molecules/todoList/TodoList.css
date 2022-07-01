@@ -1,0 +1,20 @@
+.todo-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.todo-heading {
+    margin: 25px;
+}
+
+.todo-form {
+    margin-top: 25px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
