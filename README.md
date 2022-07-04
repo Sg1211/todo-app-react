@@ -3,6 +3,10 @@
 This is a simple todo app that is used to maintain our day-to-day task.
 
 # Todo App Video
+
+https://user-images.githubusercontent.com/76883593/177075611-7318285f-edc0-4f20-9b1e-c82220d67c5c.mov
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
