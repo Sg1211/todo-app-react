@@ -12,16 +12,20 @@ function useTodoSetup(todoList, updateTodoList, saveTodoList) {
 
        const handleTodoTextChange = useCallback((e) => {
             setTodoText(e.target.value);
-        },[]);
+        },[setTodoText]);
 
-        const handleTodoItemSave = useCallback((e) => {
-            e.preventDefault();
+        const createTodoInfo = (todoList, todoText) => {
             if (!todoText) return;
              
             const newTodoInfo = createTodoItem(todoList, todoText);
             updateTodoList(newTodoInfo);
             setTodoText("");
-        },[todoList, todoText]);
+        }
+
+        const handleTodoItemSave = useCallback((e) => {
+            e.preventDefault();
+            createTodoInfo(todoList, todoText);
+        },[todoText]);
 
         const isCompletedTodoList = (selectedId) => todoInfo => {
             if(todoInfo.id === selectedId)
