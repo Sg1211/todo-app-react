@@ -1,5 +1,5 @@
 // Hooks
-import {useState } from 'react';
+import {useState, useCallback } from 'react';
 
 // Lodash
 import _map from 'lodash/map';
@@ -10,12 +10,11 @@ import { createTodoItem } from './useTodoSetup.helpers'
 function useTodoSetup(todoList, updateTodoList, saveTodoList) {
     const [todoText, setTodoText] = useState("");
 
-       const handleTodoTextChange = (e) => {
+       const handleTodoTextChange = useCallback((e) => {
             setTodoText(e.target.value);
-        }
+        },[setTodoText]);
 
-        const handleTodoItemSave = (e) => {
-            e.preventDefault();
+        const createTodoInfo = (todoList, todoText) => {
             if (!todoText) return;
              
             const newTodoInfo = createTodoItem(todoList, todoText);
@@ -23,16 +22,21 @@ function useTodoSetup(todoList, updateTodoList, saveTodoList) {
             setTodoText("");
         }
 
+        const handleTodoItemSave = useCallback((e) => {
+            e.preventDefault();
+            createTodoInfo(todoList, todoText);
+        },[todoText]);
+
         const isCompletedTodoList = (selectedId) => todoInfo => {
             if(todoInfo.id === selectedId)
                 todoInfo.isCompleted = !todoInfo.isCompleted
             return todoInfo;
         }
     
-        const onTodoItemClick = (selectedId) => {
+        const onTodoItemClick = useCallback((selectedId) => {
             const newTodoList = _map(todoList, isCompletedTodoList(selectedId));
             saveTodoList(newTodoList);
-        }
+        },[todoList])
 
     return {todoText, handleTodoTextChange, handleTodoItemSave, onTodoItemClick}
 }

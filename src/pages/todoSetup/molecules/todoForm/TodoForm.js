@@ -43,5 +43,5 @@ TodoForm.defaultProps = {
     handleTodoItemSave: _noop
 };
 
-export default TodoForm;
+export default React.memo(TodoForm);
 

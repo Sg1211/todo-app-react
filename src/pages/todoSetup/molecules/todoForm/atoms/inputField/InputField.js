@@ -31,4 +31,4 @@ InputField.defaultProps = {
     handleTodoTextChange: _noop
   };
 
-export default InputField
+export default React.memo(InputField);

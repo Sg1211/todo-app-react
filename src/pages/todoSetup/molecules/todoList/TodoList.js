@@ -46,4 +46,4 @@ TodoList.defaultProps = {
     onTodoItemClick: _noop
 };
 
-export default TodoList;
+export default React.memo(TodoList);
